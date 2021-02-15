@@ -42,10 +42,10 @@ input {
 }
 
 :--heading {
-  font-family: "Comic Neue", sans-serif;
   margin: 1rem 0;
 }
 
+h1,
 h2 {
   font-size: 1.8em;
 }
@@ -82,5 +82,42 @@ img.img-fluid {
 .showBtn {
   opacity: 1;
   transform: translateY(0);
+}
+
+.backHome {
+  font-size: 1.2rem;
+  padding: 15px 0;
+}
+.container {
+  margin: 80px auto 0;
+  padding: 0 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (--sm) {
+  .container {
+    max-width: 540px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+}
+@media (--md) {
+  .container {
+    max-width: 760px;
+  }
+}
+@media (--lg) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (--xl) {
+  .container {
+    max-width: 1140px;
+  }
 }
 </style>

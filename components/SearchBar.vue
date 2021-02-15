@@ -1,12 +1,17 @@
 <template>
   <div class="search">
-    <input type="search" placeholder="Enter A Movie Name..." />
+    <input type="search" placeholder="Enter A Movie Name..." @input="onInput" />
   </div>
 </template>
 
 <script>
 export default {
   name: "SearchBar",
+  methods: {
+    onInput(event) {
+      this.$emit("termChange", event.target.value);
+    },
+  },
 };
 </script>
 

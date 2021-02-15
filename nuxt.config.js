@@ -1,3 +1,5 @@
+import moviesGql from "@/apollo/queries/getMovies.gql";
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
@@ -76,6 +78,31 @@ export default {
         },
         "rucksack-css": {},
       },
+    },
+  },
+  generate: {
+    routes() {
+      const clientApollo = this.app.apolloProvider.defaultClient;
+      return new Promise((resolve, reject) => {
+        clientApollo
+          .query({
+            query: moviesGql,
+          })
+          .then((resp) => {
+            const routes = [];
+            for (const key in resp.data.movies.popular.edges.node.id) {
+              routes.push({
+                route: "/movie/" + key,
+                payload: { movie: resp.data.movies.popular.edges.node },
+              });
+            }
+            resolve(resp);
+            return routes;
+          })
+          .catch((err) => {
+            resolve(err);
+          });
+      });
     },
   },
 };

@@ -1,26 +1,27 @@
 <template>
-  <section :class="className">
-    <!-- <nuxt-link :to="'/movie/' + movie.id" class="card" @click="onMovieSelect"> -->
-    <div class="card" @click="onMovieSelect">
+  <section :class="className" @click="onMovieSelect">
+    <nuxt-link event="" :to="'/movie/' + movie.id" class="card">
       <div class="card-body">
         <div v-if="movie.poster" class="poster">
           <img class="img-fluid" :src="movie.poster" :alt="movie.title" />
         </div>
         <div class="movie-details">
-          <h2>{{ movie.title }}</h2>
-          <div v-if="movie.genre" class="genre">
+          <h2 class="line-clamp line-clamp-1">{{ movie.title }}</h2>
+          <div v-if="movie.details.genres != '' && detail" class="genre">
             <h3>Genre: &nbsp;</h3>
-            <span v-for="g in movie.genre" :key="g"> {{ g }}</span>
+            <span v-for="genre in movie.details.genres" :key="genre.id">
+              {{ genre.name }}</span
+            >
           </div>
-          <div v-if="movie.releaseDate" class="year">
+          <div v-if="movie.releaseDate != '' && detail" class="year">
             <h3>
               Release Date:
               {{ new Date(movie.releaseDate).getFullYear() }}
             </h3>
           </div>
           <div v-if="movie.overview" class="overview">
-            <h3>Overview:</h3>
-            <p class="line-clamp line-clamp-3">{{ movie.overview }}</p>
+            <h3 v-if="detail">Overview:</h3>
+            <p class="line-clamp line-clamp-4">{{ movie.overview }}</p>
           </div>
           <div v-if="detail">
             <div v-if="movie.rating" class="rating">
@@ -30,8 +31,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- </nuxt-link> -->
+    </nuxt-link>
   </section>
 </template>
 <script>
@@ -41,6 +41,12 @@ export default {
     movie: {
       type: Object,
       required: true,
+      default: () => ({
+        id: "1",
+        title: "test",
+        rating: "10",
+        details: {},
+      }),
     },
     detail: {
       type: Boolean,
@@ -61,17 +67,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.movie-preview {
-  border: 1px solid --red;
-  box-shadow: 0 2px 2px #ccc;
-  background-color: white;
-}
-
-.movie-thumbnail {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
+a.card {
+  text-decoration: none;
+  color: #000;
 }
 
 .card {
@@ -81,10 +79,6 @@ export default {
   & h2 {
     margin-top: 0;
   }
-}
-
-.movie-details {
-  padding: 20px;
 }
 
 .line-clamp {
@@ -99,8 +93,13 @@ export default {
   padding: 0 !important;
 }
 
-.line-clamp-3 {
-  -webkit-line-clamp: 3;
-  height: calc(1em * 1.2 * 3);
+.line-clamp-1 {
+  -webkit-line-clamp: 1;
+  height: calc(1em * 1.2 * 1);
+}
+
+.line-clamp-4 {
+  -webkit-line-clamp: 4;
+  height: calc(1em * 1.2 * 4);
 }
 </style>

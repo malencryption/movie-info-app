@@ -1,9 +1,9 @@
 <template>
   <section class="movie-list">
-    <h2 class="list-title">Popular Movies</h2>
+    <h2 class="list-title">{{ listTitle }}</h2>
     <Movie
-      v-for="movie in movies"
-      :key="movie.node.id"
+      v-for="(movie, index) in movies"
+      :key="index"
       :movie="movie.node"
       class-name="movie"
       @movieSelect="onMovieSelect"
@@ -23,6 +23,11 @@ export default {
       type: Array,
       required: true,
     },
+    listTitle: {
+      type: String,
+      required: true,
+      default: "Popular Movies",
+    },
   },
   methods: {
     onMovieSelect(movie) {
@@ -33,36 +38,4 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-.movie-list {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 40px 0px 20px;
-}
-
-@media (--md) {
-  .movie-list {
-    margin: 40px -20px;
-  }
-  .movie {
-    margin: 20px;
-  }
-}
-
-.list-title {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.movie {
-  border: 1px solid var(--red);
-  border-radius: var(--rad);
-  overflow: hidden;
-  width: 350px;
-  margin: 20px 0 0;
-}
-</style>
+<style lang="postcss" scoped></style>

@@ -1,11 +1,12 @@
 query getMovies {
   movies {
-    popular(first: 21) {
+    popular(first: 60) {
       edges {
         node {
           details {
             genres {
               name
+              id
             }
           }
           id
