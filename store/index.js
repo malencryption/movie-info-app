@@ -1,6 +1,6 @@
 import Vuex from "vuex";
 import moviesGql from "@/apollo/queries/getMovies.gql";
-import movieByIdGql from "@/apollo/queries/getMovieById.gql";
+// import movieByIdGql from "@/apollo/queries/getMovieById.gql";
 
 const createStore = () => {
   return new Vuex.Store({
@@ -39,25 +39,25 @@ const createStore = () => {
       selectMovie(vuexContext, movie) {
         vuexContext.commit("selectMovie", movie);
       },
-      getMovieById({ commit }, movieId) {
-        const clientApollo = this.app.apolloProvider.defaultClient;
-        return new Promise((resolve, reject) => {
-          clientApollo
-            .query({
-              query: movieByIdGql,
-              variables: {
-                id: movieId,
-              },
-            })
-            .then((resp) => {
-              commit("selectMovie", resp.data.movies.movie);
-              resolve(resp);
-            })
-            .catch((err) => {
-              resolve(err);
-            });
-        });
-      },
+      // getMovieById({ commit }, movieId) {
+      //   const clientApollo = this.app.apolloProvider.defaultClient;
+      //   return new Promise((resolve, reject) => {
+      //     clientApollo
+      //       .query({
+      //         query: movieByIdGql,
+      //         variables: {
+      //           id: movieId,
+      //         },
+      //       })
+      //       .then((resp) => {
+      //         commit("selectMovie", resp.data.movies.movie);
+      //         resolve(resp);
+      //       })
+      //       .catch((err) => {
+      //         resolve(err);
+      //       });
+      //   });
+      // },
     },
     getters: {
       loadedMovies(state) {

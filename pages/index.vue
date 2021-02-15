@@ -7,6 +7,11 @@
       </p>
     </div>
     <SearchBar />
+    <Movie
+      :movie="selectedMovie"
+      class-name="movie"
+      @movieSelect="onMovieSelect"
+    />
     <MovieList :movies="loadedMovies" @movieSelect="onMovieSelect" />
   </div>
 </template>
