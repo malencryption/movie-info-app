@@ -1,0 +1,17 @@
+query getMovieById {
+  movies {
+    movie(id: $movieId) {
+      details {
+        genres {
+          name
+        }
+      }
+      id
+      overview
+      title
+      releaseDate
+      rating
+      poster(size: Original)
+    }
+  }
+}

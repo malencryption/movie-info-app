@@ -8,6 +8,7 @@ query getMovies {
               name
             }
           }
+          id
           overview
           title
           releaseDate

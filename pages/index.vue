@@ -7,7 +7,6 @@
       </p>
     </div>
     <SearchBar />
-    <!-- <div v-if="$apollo.queries.movies.loading">I am still loading</div> -->
     <MovieList :movies="loadedMovies" @movieSelect="onMovieSelect" />
   </div>
 </template>
@@ -15,7 +14,6 @@
 <script>
 import SearchBar from "@/components/SearchBar";
 import MovieList from "@/components/Movies/MovieList";
-// import moviesGql from "@/apollo/queries/getMovies.gql";
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -31,23 +29,10 @@ export default {
       selectedMovie: (state) => state.selectedMovie,
     }),
   },
-  // apollo: {
-  //   movies: {
-  //     prefetch: true,
-  //     query: moviesGql,
-  //     update(data) {
-  //       console.log(data);
-  //       return data.movies.popular.edges;
-  //     },
-  //     error(error) {
-  //       console.error("We've got an error!", error);
-  //     },
-  //   },
-  // },
   methods: {
     ...mapActions(["selectMovie"]),
     onMovieSelect(movie) {
-      console.log("Movie Selected!" + JSON.stringify(movie));
+      // console.log("Movie Selected!" + JSON.stringify(movie));
       this.selectMovie(movie);
     },
   },

@@ -8,15 +8,6 @@
       class-name="movie"
       @movieSelect="onMovieSelect"
     />
-    <!-- <Movie
-      v-for="movie in movies"
-      :id="movie.node.id"
-      :key="movie.node.id"
-      :title="movie.node.title"
-      :year="movie.node.releaseDate"
-      :movie="movie.node"
-      class-name="movie"
-    /> -->
   </section>
 </template>
 <script>
@@ -35,7 +26,7 @@ export default {
   },
   methods: {
     onMovieSelect(movie) {
-      console.log("Selected Movie");
+      // console.log("Selected Movie");
       this.$emit("movieSelect", movie);
     },
   },

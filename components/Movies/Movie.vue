@@ -1,6 +1,6 @@
 <template>
-  <section :class="className" @click="onMovieSelect">
-    <div class="card">
+  <section :class="className">
+    <nuxt-link :to="'/movie/' + movie.id" class="card" @click="onMovieSelect">
       <div class="card-body">
         <div v-if="movie.poster" class="poster">
           <img class="img-fluid" :src="movie.poster" :alt="movie.title" />
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </nuxt-link>
   </section>
 </template>
 <script>
@@ -51,7 +51,8 @@ export default {
     },
   },
   methods: {
-    onMovieSelect() {
+    onMovieSelect(e) {
+      e.preventDefault;
       this.$emit("movieSelect", this.movie);
     },
   },
