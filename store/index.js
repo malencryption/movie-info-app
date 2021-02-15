@@ -11,6 +11,9 @@ const createStore = () => {
       setMovies(state, movies) {
         state.loadedMovies = movies;
       },
+      selectMovie(state, movie) {
+        state.selectedMovie = movie;
+      },
     },
     actions: {
       nuxtServerInit({ commit }, { error }) {
@@ -32,10 +35,16 @@ const createStore = () => {
       setMovies(vuexContext, movies) {
         vuexContext.commit("setMovies", movies);
       },
+      selectMovie(vuexContext, movie) {
+        vuexContext.commit("selectMovie", movie);
+      },
     },
     getters: {
       loadedMovies(state) {
         return state.loadedMovies;
+      },
+      selectedMovie(state) {
+        return state.selectedMovie;
       },
     },
   });

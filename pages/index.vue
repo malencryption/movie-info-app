@@ -16,19 +16,19 @@
 import SearchBar from "@/components/SearchBar";
 import MovieList from "@/components/Movies/MovieList";
 // import moviesGql from "@/apollo/queries/getMovies.gql";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   components: {
     SearchBar,
     MovieList,
   },
-  data() {
-    return { selectedMovie: null };
-  },
   computed: {
     ...mapState({
       loadedMovies: (state) => state.loadedMovies,
+    }),
+    ...mapState({
+      selectedMovie: (state) => state.selectedMovie,
     }),
   },
   // apollo: {
@@ -45,9 +45,10 @@ export default {
   //   },
   // },
   methods: {
+    ...mapActions(["selectMovie"]),
     onMovieSelect(movie) {
       console.log("Movie Selected!" + JSON.stringify(movie));
-      this.selectedMovie = movie;
+      this.selectMovie(movie);
     },
   },
 };
