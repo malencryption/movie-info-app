@@ -7,32 +7,47 @@
       </p>
     </div>
     <SearchBar />
-    <div v-if="$apollo.queries.movies.loading">I am still loading</div>
-    <MovieList v-else :movies="movies" />
+    <!-- <div v-if="$apollo.queries.movies.loading">I am still loading</div> -->
+    <MovieList :movies="loadedMovies" @movieSelect="onMovieSelect" />
   </div>
 </template>
 
 <script>
 import SearchBar from "@/components/SearchBar";
 import MovieList from "@/components/Movies/MovieList";
-import moviesGql from "@/apollo/queries/getMovies.gql";
+// import moviesGql from "@/apollo/queries/getMovies.gql";
+import { mapState } from "vuex";
 
 export default {
   components: {
     SearchBar,
     MovieList,
   },
-  apollo: {
-    movies: {
-      prefetch: true,
-      query: moviesGql,
-      update(data) {
-        console.log(data);
-        return data.movies.popular.edges;
-      },
-      error(error) {
-        console.error("We've got an error!", error);
-      },
+  data() {
+    return { selectedMovie: null };
+  },
+  computed: {
+    ...mapState({
+      loadedMovies: (state) => state.loadedMovies,
+    }),
+  },
+  // apollo: {
+  //   movies: {
+  //     prefetch: true,
+  //     query: moviesGql,
+  //     update(data) {
+  //       console.log(data);
+  //       return data.movies.popular.edges;
+  //     },
+  //     error(error) {
+  //       console.error("We've got an error!", error);
+  //     },
+  //   },
+  // },
+  methods: {
+    onMovieSelect(movie) {
+      console.log("Movie Selected!" + JSON.stringify(movie));
+      this.selectedMovie = movie;
     },
   },
 };

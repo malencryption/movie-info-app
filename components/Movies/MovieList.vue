@@ -6,6 +6,7 @@
       :key="movie.node.id"
       :movie="movie.node"
       class-name="movie"
+      @movieSelect="onMovieSelect"
     />
     <!-- <Movie
       v-for="movie in movies"
@@ -22,6 +23,7 @@
 import Movie from "@/components/Movies/Movie";
 
 export default {
+  name: "MovieList",
   components: {
     Movie,
   },
@@ -29,6 +31,12 @@ export default {
     movies: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    onMovieSelect(movie) {
+      console.log("Selected Movie");
+      this.$emit("movieSelect", movie);
     },
   },
 };

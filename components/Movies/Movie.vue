@@ -1,5 +1,5 @@
 <template>
-  <section :class="className">
+  <section :class="className" @click="onMovieSelect">
     <div class="card">
       <div class="card-body">
         <div v-if="movie.poster" class="poster">
@@ -48,6 +48,11 @@ export default {
       type: String,
       default: "",
       require: false,
+    },
+  },
+  methods: {
+    onMovieSelect() {
+      this.$emit("movieSelect", this.movie);
     },
   },
 };
