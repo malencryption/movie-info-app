@@ -1,7 +1,9 @@
 <template>
   <header>
     <div :class="className">
-      <nuxt-link to="/"><slot /></nuxt-link>
+      <h1>
+        <nuxt-link to="/"><slot /></nuxt-link>
+      </h1>
     </div>
   </header>
 </template>
@@ -24,7 +26,7 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  height: 60px;
+  height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;

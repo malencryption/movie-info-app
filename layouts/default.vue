@@ -27,7 +27,8 @@ export default {
 @custom-media --lg (width >= 992px);
 @custom-media --xl (width >= 1200px);
 
-html {
+html,
+input {
   font-family: "Montserrat", sans-serif;
   font-size: responsive;
 }
@@ -41,5 +42,10 @@ html {
 
 :--heading {
   font-family: "Comic Neue", sans-serif;
+  margin: 1rem 0;
+}
+
+img.img-fluid {
+  width: 100%;
 }
 </style>

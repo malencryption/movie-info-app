@@ -1,7 +1,13 @@
 <template>
   <section class="movie-list">
-    <div>Movie List</div>
+    <h2 class="list-title">Popular Movies</h2>
     <Movie
+      v-for="movie in movies"
+      :key="movie.node.id"
+      :movie="movie.node"
+      class-name="movie"
+    />
+    <!-- <Movie
       v-for="movie in movies"
       :id="movie.node.id"
       :key="movie.node.id"
@@ -9,7 +15,7 @@
       :year="movie.node.releaseDate"
       :movie="movie.node"
       class-name="movie"
-    />
+    /> -->
   </section>
 </template>
 <script>
@@ -35,5 +41,19 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 40px -20px;
+}
+
+.list-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.movie {
+  border: 1px solid var(--red);
+  border-radius: var(--rad);
+  overflow: hidden;
+  width: 350px;
+  margin: 20px;
 }
 </style>

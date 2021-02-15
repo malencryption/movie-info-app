@@ -1,0 +1,20 @@
+query getMovies {
+  movies {
+    popular(first: 21) {
+      edges {
+        node {
+          details {
+            genres {
+              name
+            }
+          }
+          overview
+          title
+          releaseDate
+          rating
+          poster(size: Original)
+        }
+      }
+    }
+  }
+}

@@ -43,7 +43,18 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    "@nuxtjs/apollo",
   ],
+
+  apollo: {
+    watchLoading: "@/apollo/loadingHandler.js",
+    errorHandler: "@/apollo/errorHandler.js",
+    clientConfigs: {
+      default: {
+        httpEndpoint: "https://tmdb.apps.quintero.io/",
+      },
+    },
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
