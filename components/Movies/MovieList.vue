@@ -36,11 +36,21 @@ export default {
 
 <style lang="postcss" scoped>
 .movie-list {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 40px -20px;
+  margin: 40px 0px 20px;
+}
+
+@media (--md) {
+  .movie-list {
+    margin: 40px -20px;
+  }
+  .movie {
+    margin: 20px;
+  }
 }
 
 .list-title {
@@ -54,6 +64,6 @@ export default {
   border-radius: var(--rad);
   overflow: hidden;
   width: 350px;
-  margin: 20px;
+  margin: 20px 0 0;
 }
 </style>

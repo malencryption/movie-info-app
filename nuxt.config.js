@@ -28,7 +28,7 @@ export default {
   css: ["@/assets/variables.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: "@/plugins/back-to-top.client.js" }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,7 +37,14 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     "@nuxtjs/eslint-module",
+    "@nuxtjs/fontawesome",
   ],
+
+  fontawesome: {
+    icons: {
+      solid: ["faArrowUp"],
+    },
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -67,6 +74,7 @@ export default {
           stage: 1,
           importFrom: "./assets/variables.css",
         },
+        "rucksack-css": {},
       },
     },
   },

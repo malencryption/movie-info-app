@@ -14,13 +14,17 @@
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/axios": "^5.12.5",
+    "back-to-top-davipereira": "0.0.5",
     "core-js": "^3.8.3",
     "graphql-tag": "^2.11.0",
-    "nuxt": "^2.14.12"
+    "nuxt": "^2.14.12",
+    "rucksack-css": "^1.0.2"
   },
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@vue/test-utils": "^1.1.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
@@ -31,6 +35,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.5.0",
     "jest": "^26.6.3",
+    "nuxt-fontawesome": "^0.4.0",
     "prettier": "^2.2.1",
     "vue-jest": "^3.0.4"
   }

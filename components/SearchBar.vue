@@ -17,7 +17,7 @@ input[type="search"] {
   border-radius: var(--rad);
   height: 3rem;
   outline: 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   box-shadow: 0px 4px 3px rgb(0 0 0 / 6%);
 
   &::placeholder {

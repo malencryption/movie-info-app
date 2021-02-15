@@ -19,11 +19,13 @@
           </div>
           <div v-if="movie.overview" class="overview">
             <h3>Overview:</h3>
-            {{ movie.overview }}
+            <p class="line-clamp line-clamp-3">{{ movie.overview }}</p>
           </div>
-          <div v-if="movie.rating" class="rating">
-            <h3>Rating: &nbsp;</h3>
-            {{ movie.rating }}
+          <div v-if="detail">
+            <div v-if="movie.rating" class="rating">
+              <h3>Rating: &nbsp;</h3>
+              {{ movie.rating }}
+            </div>
           </div>
         </div>
       </div>
@@ -37,6 +39,10 @@ export default {
     movie: {
       type: Object,
       required: true,
+    },
+    detail: {
+      type: Boolean,
+      default: false,
     },
     className: {
       type: String,
@@ -72,5 +78,22 @@ export default {
 
 .movie-details {
   padding: 20px;
+}
+
+.line-clamp {
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  position: relative;
+
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
+}
+
+.line-clamp-3 {
+  -webkit-line-clamp: 3;
+  height: calc(1em * 1.2 * 3);
 }
 </style>

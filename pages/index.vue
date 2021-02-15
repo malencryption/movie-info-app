@@ -47,6 +47,13 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+
+.intro {
+  padding-top: 30px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
 @media (--sm) {
   .container {
     max-width: 540px;
@@ -55,6 +62,9 @@ export default {
 @media (--md) {
   .container {
     max-width: 540px;
+  }
+  .intro {
+    padding-top: 50px;
   }
 }
 @media (--lg) {
@@ -66,11 +76,5 @@ export default {
   .container {
     max-width: 960px;
   }
-}
-
-.intro {
-  padding-top: 50px;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
 }
 </style>
